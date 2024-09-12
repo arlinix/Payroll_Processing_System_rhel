@@ -1,0 +1,20 @@
+if [ $# -ne 3 ]
+then 
+echo improper arguments 
+exit
+fi
+
+str=$1
+row=$2
+attr=$3
+length=`echo $str |wc -c`
+col=`expr \( 80 - $length \) / 2`
+tput cup $row $col
+
+case $attr in
+[bB]) echo -ne "\033[1m\033[32m$str";;
+[nN]) echo -ne "$str";;
+[rR]) echo -ne "\033[7m$str";;
+esac
+
+echo -ne "\033[0m" 

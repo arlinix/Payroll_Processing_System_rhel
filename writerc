@@ -1,0 +1,21 @@
+if [ $# -ne 4 ]
+then 
+echo improper arguments 
+exit
+fi
+
+str="$1"
+row=$2
+col=$3
+attr=$4
+
+tput cup $row $col
+
+case $attr in
+
+[bB]) echo -ne "\033[1m$str";;
+[nN]) echo -ne "\033[36m$str";;
+[rR]) echo -ne "\033[7m$str";;
+esac
+
+echo -ne "\033[0m"
